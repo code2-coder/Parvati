@@ -19,6 +19,7 @@ import Process from './components/sections/Process';
 import Footer from './components/sections/Footer';
 import FloatingButtons from './components/sections/FloatingButtons';
 
+
 export default function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -36,7 +37,7 @@ export default function App() {
       />
 
       <Header />
-      
+
       <main>
         <Hero />
         <About />
