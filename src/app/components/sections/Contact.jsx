@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Send, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phoneNumber: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const whatsappNumber = "919767375262";
+    const text = `*New Inquiry from Website*\n\n` +
+                 `*Name:* ${formData.fullName}\n` +
+                 `*Phone:* ${formData.phoneNumber}\n` +
+                 `*Email:* ${formData.email}\n` +
+                 `*Message:* ${formData.message}`;
+    
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   const contactInfo = [
     {
       icon: MapPin,
@@ -93,22 +124,54 @@ export default function Contact() {
               {/* Form Decorative Accents */}
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#194c7c] to-[#ea5a14]"></div>
               
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                 <div className="space-y-2">
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
-                  <input type="text" className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" placeholder="John Doe" />
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" 
+                    placeholder="John Doe" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
-                  <input type="tel" className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" placeholder="+91 97673 75262" />
+                  <input 
+                    type="tel" 
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" 
+                    placeholder="+91 97673 75262" 
+                  />
                 </div>
                 <div className="md:col-span-2 space-y-2">
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" placeholder="john@example.com" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" 
+                    placeholder="john@example.com" 
+                  />
                 </div>
                 <div className="md:col-span-2 space-y-2">
                   <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">Your Message</label>
-                  <textarea rows={4} className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold resize-none text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" placeholder="How can we help you today?"></textarea>
+                  <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={4} 
+                    className="w-full px-6 py-4 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ea5a14]/20 focus:border-[#ea5a14] transition-all font-semibold resize-none text-[15px] text-[#194c7c] placeholder-slate-300 shadow-sm" 
+                    placeholder="How can we help you today?"
+                  ></textarea>
                 </div>
                 <div className="md:col-span-2 pt-4">
                   <motion.button 
