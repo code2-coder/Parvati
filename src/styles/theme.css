@@ -1,0 +1,102 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  
+  --primary: #194c7c;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #ea5a14;
+  --secondary-foreground: #ffffff;
+  
+  --accent: #f8fafc;
+  --accent-foreground: #194c7c;
+  
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  
+  --border: #e2e8f0;
+  --input: #f8fafc;
+  
+  --radius: 0.75rem;
+  
+  /* Modern Gradients */
+  --grad-primary: linear-gradient(135deg, #194c7c 0%, #0d2c4b 100%);
+  --grad-orange: linear-gradient(135deg, #ea5a14 0%, #c74a0e 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #0f172a;
+  --secondary-foreground: #f8fafc;
+  
+  --accent: #1e293b;
+  --accent-foreground: #60a5fa;
+  
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  
+  --border: #1e293b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-sm: calc(var(--radius) - 0.5rem);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  
+  p {
+    @apply leading-relaxed tracking-wide;
+  }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Reveal Animation Class */
+.reveal-on-scroll {
+  @apply opacity-0 translate-y-10 transition-all duration-1000 ease-out;
+}
+
+.reveal-on-scroll.active {
+  @apply opacity-100 translate-y-0;
+}

@@ -1,0 +1,1057 @@
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone, MessageCircle, Mail, MapPin, Facebook, Instagram, Monitor, Camera, Fingerprint, Server, HardDrive, ChevronRight, Star, Shield, Clock, Award, Users, Zap, CheckCircle, ArrowRight, Laptop, Wifi, Database, Plus, Minus } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="size-full bg-white overflow-x-hidden">
+      {/* Sticky Header */}
+      <motion.header
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-white shadow-md'}`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <Monitor className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-bold text-xl text-gray-900">PARVATI SYSTEMS</span>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+            <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+          </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <a href="tel:+919767375262" className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              <Phone className="w-4 h-4" />
+              Call Now
+            </a>
+            <a href="https://wa.me/919767375262" className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t px-4 py-4">
+            <div className="flex flex-col gap-4">
+              <a href="#home" className="text-gray-700 hover:text-blue-600">Home</a>
+              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
+              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
+              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
+              <div className="flex gap-2 pt-2">
+                <a href="tel:+919767375262" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg">
+                  <Phone className="w-4 h-4" />
+                  Call
+                </a>
+                <a href="https://wa.me/919767375262" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg">
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.header>
+
+      {/* Hero Section */}
+      <section id="home" className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 text-white py-20 md:py-32 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 opacity-10">
+          <motion.div
+            className="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute bottom-10 right-10 w-96 h-96 bg-purple-400 rounded-full blur-3xl"
+            animate={{
+              x: [0, -30, 0],
+              y: [0, 50, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-400 rounded-full blur-3xl"
+            animate={{
+              x: [-100, 100, -100],
+              y: [-50, 50, -50],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+        </div>
+
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.2, 0.8, 0.2],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-block mb-6"
+            >
+              <span className="px-4 py-2 bg-blue-500/30 backdrop-blur-sm rounded-full text-sm font-semibold border border-blue-400/50">
+                🚀 Your Trusted IT Partner Since 2014
+              </span>
+            </motion.div>
+
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Complete IT & Security Solutions
+            </motion.h1>
+
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-blue-100"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              Computer, CCTV, Networking & Hardware Services
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <motion.a
+                href="#contact"
+                className="px-8 py-4 bg-white text-blue-900 rounded-lg hover:bg-blue-50 transition-colors font-semibold flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Now <ArrowRight className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                href="#contact"
+                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-900 transition-colors font-semibold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Free Quote
+              </motion.a>
+            </motion.div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
+            {[
+              { icon: Monitor, label: 'Computer & Laptops', delay: 0.2 },
+              { icon: Camera, label: 'CCTV Solutions', delay: 0.4 },
+              { icon: Server, label: 'Networking', delay: 0.6 },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: item.delay }}
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+              >
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                >
+                  <item.icon className="w-12 h-12 mx-auto mb-3" />
+                </motion.div>
+                <p className="font-medium">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {[
+              { icon: Users, value: '500+', label: 'Happy Clients', delay: 0.1 },
+              { icon: CheckCircle, value: '1000+', label: 'Projects Done', delay: 0.2 },
+              { icon: Award, value: '10+', label: 'Years Experience', delay: 0.3 },
+              { icon: Clock, value: '24/7', label: 'Support', delay: 0.4 },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: stat.delay }}
+              >
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <stat.icon className="w-8 h-8 text-blue-600" />
+                </motion.div>
+                <Counter end={stat.value} />
+                <p className="text-gray-600 mt-2">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose PARVATI SYSTEMS?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">We deliver excellence through expertise, reliability, and customer-focused solutions</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              { icon: Shield, title: 'Trusted & Reliable', desc: 'Over 10 years of proven track record in delivering quality IT solutions', color: 'blue' },
+              { icon: Zap, title: 'Fast Response', desc: '24/7 support with quick turnaround time for all your IT emergencies', color: 'yellow' },
+              { icon: Award, title: 'Expert Team', desc: 'Certified professionals with extensive experience in latest technologies', color: 'purple' },
+              { icon: CheckCircle, title: 'Quality Service', desc: 'We ensure 100% customer satisfaction with quality products and services', color: 'green' },
+              { icon: Laptop, title: 'Latest Technology', desc: 'We use cutting-edge tools and equipment for all installations', color: 'indigo' },
+              { icon: Users, title: 'Customer First', desc: 'Your needs are our priority - personalized solutions for every client', color: 'pink' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <motion.div
+                  className={`inline-flex items-center justify-center w-14 h-14 bg-${item.color}-100 rounded-lg mb-4`}
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <item.icon className={`w-7 h-7 text-${item.color}-600`} />
+                </motion.div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Comprehensive IT solutions tailored to meet your business needs</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                icon: <Monitor className="w-12 h-12 text-blue-600" />,
+                title: "Computer/Laptop/Printer Sales & Service",
+                description: "Complete sales and service solutions for all your computer hardware needs including laptops, desktops, and printers.",
+                delay: 0.1
+              },
+              {
+                icon: <Camera className="w-12 h-12 text-blue-600" />,
+                title: "CCTV HD/IP Camera Solutions",
+                description: "Professional CCTV installation and monitoring systems with HD and IP cameras for enhanced security.",
+                delay: 0.2
+              },
+              {
+                icon: <Fingerprint className="w-12 h-12 text-blue-600" />,
+                title: "Biometric & Access Control",
+                description: "Advanced biometric systems and access control solutions for secure facility management.",
+                delay: 0.3
+              },
+              {
+                icon: <Server className="w-12 h-12 text-blue-600" />,
+                title: "Server & Networking Solutions",
+                description: "Enterprise-grade server setup, maintenance, and networking infrastructure for seamless operations.",
+                delay: 0.4
+              },
+              {
+                icon: <HardDrive className="w-12 h-12 text-blue-600" />,
+                title: "Computer Hardware Peripherals",
+                description: "Wide range of computer peripherals and accessories to enhance your productivity.",
+                delay: 0.5
+              },
+              {
+                icon: <Wifi className="w-12 h-12 text-blue-600" />,
+                title: "WiFi & Network Setup",
+                description: "High-speed wireless networking solutions for homes and businesses with optimal coverage.",
+                delay: 0.6
+              },
+            ].map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About PARVATI SYSTEMS</h2>
+              <p className="text-gray-600 text-lg">Your trusted partner in IT solutions</p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <motion.div
+                className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                <p className="text-gray-700">To provide cutting-edge IT solutions and exceptional service that empower businesses to achieve their goals through reliable technology infrastructure.</p>
+              </motion.div>
+              <motion.div
+                className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                <p className="text-gray-700">To be the leading provider of comprehensive IT and security solutions in Maharashtra, recognized for quality, innovation, and customer satisfaction.</p>
+              </motion.div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: '10+', label: 'Years Experience' },
+                { value: '500+', label: 'Happy Clients' },
+                { value: '24/7', label: 'Support' },
+                { value: '100%', label: 'Quality Service' },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center p-6 bg-gray-50 rounded-xl"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -5, backgroundColor: '#dbeafe' }}
+                >
+                  <div className="text-3xl font-bold text-blue-600 mb-2">{stat.value}</div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Brands We Deal With */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Brands We Work With</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Authorized dealers and service partners for leading technology brands</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-6xl mx-auto">
+            {[
+              { name: 'HP', delay: 0.1 },
+              { name: 'Dell', delay: 0.15 },
+              { name: 'Lenovo', delay: 0.2 },
+              { name: 'Canon', delay: 0.25 },
+              { name: 'Epson', delay: 0.3 },
+              { name: 'Hikvision', delay: 0.35 },
+              { name: 'Dahua', delay: 0.4 },
+              { name: 'CP Plus', delay: 0.45 },
+              { name: 'D-Link', delay: 0.5 },
+              { name: 'TP-Link', delay: 0.55 },
+              { name: 'Cisco', delay: 0.6 },
+              { name: 'Samsung', delay: 0.65 },
+            ].map((brand, index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-50 p-6 rounded-xl flex items-center justify-center border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: brand.delay }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-lg font-semibold text-gray-700">{brand.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Providing customized IT solutions across various sectors</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { icon: <Monitor className="w-8 h-8" />, title: 'Corporate Offices', desc: 'Complete IT infrastructure setup', delay: 0.1 },
+              { icon: <Camera className="w-8 h-8" />, title: 'Retail Stores', desc: 'CCTV & security systems', delay: 0.2 },
+              { icon: <Server className="w-8 h-8" />, title: 'Educational Institutions', desc: 'Computer labs & networks', delay: 0.3 },
+              { icon: <Shield className="w-8 h-8" />, title: 'Healthcare', desc: 'Secure data management', delay: 0.4 },
+              { icon: <Database className="w-8 h-8" />, title: 'Manufacturing', desc: 'Industrial IT solutions', delay: 0.5 },
+              { icon: <Wifi className="w-8 h-8" />, title: 'Hotels & Hospitality', desc: 'WiFi & connectivity', delay: 0.6 },
+              { icon: <HardDrive className="w-8 h-8" />, title: 'Government', desc: 'Secure IT infrastructure', delay: 0.7 },
+              { icon: <Fingerprint className="w-8 h-8" />, title: 'Banking & Finance', desc: 'Biometric & access control', delay: 0.8 },
+            ].map((industry, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 rounded-xl text-center border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: industry.delay }}
+                whileHover={{ y: -5 }}
+              >
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4 text-blue-600"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {industry.icon}
+                </motion.div>
+                <h3 className="font-semibold text-gray-900 mb-2">{industry.title}</h3>
+                <p className="text-sm text-gray-600">{industry.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Get answers to common questions about our services</p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              {
+                q: 'Do you provide on-site service for computer and laptop repairs?',
+                a: 'Yes, we offer both on-site and in-shop repair services. Our technicians can visit your location for diagnosis and repair at your convenience.',
+                delay: 0.1
+              },
+              {
+                q: 'What is the warranty period for CCTV installations?',
+                a: 'We provide a comprehensive 1-year warranty on all CCTV installations, covering both hardware and installation work. Extended warranty options are also available.',
+                delay: 0.2
+              },
+              {
+                q: 'Do you offer Annual Maintenance Contracts (AMC)?',
+                a: 'Yes, we offer flexible AMC plans for computers, servers, CCTV systems, and networking equipment with priority support and regular maintenance visits.',
+                delay: 0.3
+              },
+              {
+                q: 'How quickly can you respond to service requests?',
+                a: 'We provide 24/7 support. For critical issues, our team can respond within 2-4 hours. Regular service requests are typically handled within 24 hours.',
+                delay: 0.4
+              },
+              {
+                q: 'Do you supply genuine spare parts and products?',
+                a: 'Absolutely! We only deal in 100% genuine products and spare parts from authorized brands to ensure quality and reliability.',
+                delay: 0.5
+              },
+              {
+                q: 'Can you customize IT solutions for my business needs?',
+                a: 'Yes, we specialize in creating customized IT solutions tailored to your specific business requirements, budget, and scale.',
+                delay: 0.6
+              },
+            ].map((faq, index) => (
+              <FAQItem key={index} question={faq.q} answer={faq.a} delay={faq.delay} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Special Offer CTA */}
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Get Free Consultation & Quote!</h2>
+              <p className="text-xl mb-8 text-blue-100">Special offers on bulk orders and complete IT setup packages</p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {[
+                { icon: <CheckCircle className="w-8 h-8" />, text: 'Free Site Survey', delay: 0.2 },
+                { icon: <Award className="w-8 h-8" />, text: '10% Off on First Order', delay: 0.3 },
+                { icon: <Clock className="w-8 h-8" />, text: 'Same Day Service', delay: 0.4 },
+              ].map((offer, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: offer.delay }}
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                >
+                  <div className="flex flex-col items-center gap-3">
+                    {offer.icon}
+                    <p className="font-semibold">{offer.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <motion.a
+                href="#contact"
+                className="px-8 py-4 bg-white text-blue-900 rounded-lg hover:bg-blue-50 transition-colors font-semibold inline-flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Phone className="w-5 h-5" />
+                Call: +91 97673 75262
+              </motion.a>
+              <motion.a
+                href="https://wa.me/919767375262"
+                className="px-8 py-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-semibold inline-flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp Now
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Real feedback from satisfied customers</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Rajesh Kumar",
+                role: "Business Owner",
+                rating: 5,
+                text: "Excellent service! They installed CCTV cameras at my office and the quality is outstanding. Very professional team.",
+                delay: 0.1
+              },
+              {
+                name: "Priya Sharma",
+                role: "IT Manager",
+                rating: 5,
+                text: "PARVATI SYSTEMS provided us with complete networking solutions. Their support team is always responsive and helpful.",
+                delay: 0.2
+              },
+              {
+                name: "Amit Deshmukh",
+                role: "Retail Shop Owner",
+                rating: 5,
+                text: "Great experience! They repaired my laptop quickly and at a very reasonable price. Highly recommended!",
+                delay: 0.3
+              },
+            ].map((testimonial, index) => (
+              <TestimonialCard key={index} {...testimonial} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Have a question or need assistance? Contact us today!</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-gray-700 mb-2">Name</label>
+                  <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your name" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">Phone</label>
+                  <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your phone number" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">Email</label>
+                  <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your email" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2">Message</label>
+                  <textarea rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" className="w-full px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                  Send Message
+                </button>
+              </form>
+            </motion.div>
+
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Address</h4>
+                    <p className="text-gray-600">Shop No.7, J Tower Building, Ahilybai Holkar Chowk, Padampura, Ch. Sambhajinagar, Maharashtra 431001</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="flex items-start gap-4">
+                  <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Phone / WhatsApp</h4>
+                    <p className="text-gray-600">+91 97673 75262</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="flex items-start gap-4">
+                  <Mail className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Email</h4>
+                    <p className="text-gray-600">info@parvatisystems.com</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm h-64">
+                <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                  <div className="text-center">
+                    <MapPin className="w-12 h-12 mx-auto mb-2" />
+                    <p>Google Maps Placeholder</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                  <Monitor className="w-6 h-6 text-white" />
+                </div>
+                <span className="font-bold text-xl">PARVATI SYSTEMS</span>
+              </div>
+              <p className="text-gray-400">Complete IT & Security Solutions for your business needs.</p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <div className="space-y-2">
+                <a href="#home" className="block text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="#about" className="block text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#services" className="block text-gray-400 hover:text-white transition-colors">Services</a>
+                <a href="#contact" className="block text-gray-400 hover:text-white transition-colors">Contact</a>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Contact Info</h4>
+              <div className="space-y-3 text-gray-400">
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  <span>+91 97673 75262</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  <span>info@parvatisystems.com</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>Ch. Sambhajinagar, MH</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Follow Us</h4>
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="mailto:info@parvatisystems.com" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 PARVATI SYSTEMS. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating Action Buttons */}
+      <motion.a
+        href="https://wa.me/919767375262"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all z-50"
+        aria-label="WhatsApp"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+          }}
+        >
+          <MessageCircle className="w-7 h-7 text-white" />
+        </motion.div>
+      </motion.a>
+
+      <motion.a
+        href="tel:+919767375262"
+        className="fixed bottom-24 right-6 w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-all z-50"
+        aria-label="Call Now"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <Phone className="w-6 h-6 text-white" />
+      </motion.a>
+    </div>
+  );
+}
+
+function ServiceCard({ icon, title, description, delay }: { icon: React.ReactNode; title: string; description: string; delay: number }) {
+  return (
+    <motion.div
+      className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100 group"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ y: -8 }}
+    >
+      <motion.div
+        className="mb-4"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ duration: 0.3 }}
+      >
+        {icon}
+      </motion.div>
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-600 mb-4">{description}</p>
+      <motion.a
+        href="#contact"
+        className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+        whileHover={{ x: 5 }}
+      >
+        Learn More <ChevronRight className="w-4 h-4" />
+      </motion.a>
+    </motion.div>
+  );
+}
+
+function FAQItem({ question, answer, delay }: { question: string; answer: string; delay: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      className="bg-white border border-gray-200 rounded-xl overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+    >
+      <motion.button
+        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ backgroundColor: '#f9fafb' }}
+      >
+        <span className="font-semibold text-gray-900 pr-4">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isOpen ? <Minus className="w-5 h-5 text-blue-600 flex-shrink-0" /> : <Plus className="w-5 h-5 text-blue-600 flex-shrink-0" />}
+        </motion.div>
+      </motion.button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-5 text-gray-600">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+function TestimonialCard({ name, role, rating, text, delay }: { name: string; role: string; rating: number; text: string; delay: number }) {
+  return (
+    <motion.div
+      className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)' }}
+    >
+      <div className="flex gap-1 mb-4">
+        {[...Array(rating)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: delay + i * 0.1 }}
+          >
+            <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+          </motion.div>
+        ))}
+      </div>
+      <p className="text-gray-600 mb-6 italic">"{text}"</p>
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white font-semibold">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <div className="font-semibold text-gray-900">{name}</div>
+          <div className="text-sm text-gray-600">{role}</div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function Counter({ end }: { end: string }) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const isNumber = /^\d+$/.test(end);
+    if (!isNumber) {
+      return;
+    }
+
+    const target = parseInt(end);
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [end, hasAnimated]);
+
+  return (
+    <motion.div
+      className="text-3xl font-bold text-blue-600"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      onViewportEnter={() => setHasAnimated(true)}
+    >
+      {/^\d+$/.test(end) ? (hasAnimated ? count : 0) : end}
+      {/^\d+\+$/.test(end) && '+'}
+    </motion.div>
+  );
+}
