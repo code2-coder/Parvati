@@ -55,7 +55,11 @@ export default function Header() {
             >
               <div className="relative">
                 <div className="absolute -inset-2 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <img src="/assets/parvati-logo-transparent.png" alt="Parvati Systems Logo" className="h-10 md:h-12 w-auto relative z-10" />
+                <img 
+                  src="/assets/parvati-logo-transparent.png" 
+                  alt="Parvati Systems Logo" 
+                  className={`${scrolled ? 'h-12 md:h-16' : 'h-16 md:h-28'} w-auto relative z-10 transition-all duration-500`} 
+                />
               </div>
             </motion.a>
 

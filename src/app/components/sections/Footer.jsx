@@ -15,7 +15,7 @@ export default function Footer() {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
                 <Facebook size={18} fill="currentColor" strokeWidth={0} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center hover:opacity-80 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
+              <a href="https://www.instagram.com/parvati_systems?igsh=ejY3dHdwcHhoeG9j" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center hover:opacity-80 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
                 <Instagram size={18} />
               </a>
               <a href="mailto:parvati.systems@gmail.com" className="w-10 h-10 rounded-full bg-[#EA4335] text-white flex items-center justify-center hover:opacity-80 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
