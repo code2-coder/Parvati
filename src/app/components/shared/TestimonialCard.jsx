@@ -79,8 +79,8 @@ export default function TestimonialCard({ name, role, rating, text, delay }) {
           </div>
         </div>
         <div>
-          <div className="font-bold text-white text-lg tracking-tight group-hover:text-primary transition-colors">{name}</div>
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mt-1">{role}</div>
+          <div className="font-bold text-white text-lg tracking-tight group-hover:text-primary transition-colors font-['Montserrat',sans-serif]">{name}</div>
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mt-1 font-['Montserrat',sans-serif]">{role}</div>
         </div>
       </div>
     </motion.div>
