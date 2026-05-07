@@ -15,16 +15,13 @@ export default function ClientsAndBrands() {
     { name: 'Paperpack Industries', image: '/assets/c_10.png', domain: '' },
     { name: 'Sahyadri School', image: '/assets/c_11.png', domain: 'sahyadrischool.org' },
     { name: 'Orchid Group of Institutions', image: '/assets/c_12.png', domain: 'orchid.edu.in' },
-    { name: 'Shree Gurudatta Sahakari Bank Ltd.', image: '/assets/c_13.png', domain: '' },
-    { name: '', image: '/assets/c_14.png', domain: '' },
-    { name: '', image: '/assets/c_15.png', domain: '' },
-
+    { name: 'Shree Gurudatta Sahakari Bank Ltd.', image: '/assets/c_13.png', domain: '' }
   ];
 
   const brands = [
     { name: 'HP', image: '/assets/b_1.png', domain: 'hp.com' },
     { name: 'Lenovo', image: '/assets/b_2.png', domain: 'lenovo.com' },
-    { name: 'Dell', image: '  /assets/b_3.png', domain: 'dell.com' },
+    { name: 'Dell', image: '/assets/b_3.png', domain: 'dell.com' },
     { name: 'CP Plus', image: '/assets/b_4.png', domain: 'cpplusworld.com' },
     { name: 'tp-link', image: '/assets/b_5.png', domain: 'tp-link.com' },
     { name: 'SECURUS', image: '/assets/b_6.png', domain: 'securuscctv.com' },
@@ -32,7 +29,7 @@ export default function ClientsAndBrands() {
     { name: 'logitech', image: '/assets/b_8.png', domain: 'logitech.com' },
     { name: 'Quick Heal', image: '/assets/b_9.png', domain: 'quickheal.com' },
     { name: 'BenQ', image: '/assets/b_10.png', domain: 'benq.com' },
-    { name: 'Seagate', image: ' /assets/b_11.png', domain: 'seagate.com' },
+    { name: 'Seagate', image: '/assets/b_11.png', domain: 'seagate.com' },
     { name: 'Western Digital', image: '/assets/b_12.png', domain: 'wd.com' },
     { name: 'COFE', image: '/assets/b_13.png', domain: 'cofesolutions.com' },
     { name: 'TOSHIBA', image: '/assets/b_14.png', domain: 'toshiba.com' },
@@ -69,7 +66,7 @@ export default function ClientsAndBrands() {
       <img
         src={logoUrl}
         alt={name}
-        className="max-h-12 max-w-[140px] w-auto object-contain transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
+        className="max-h-12 max-w-[140px] w-auto object-contain transition-all duration-300 group-hover:scale-110"
         onError={() => setError(true)}
       />
     );
