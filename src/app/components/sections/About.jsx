@@ -20,6 +20,21 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-3"
+          >
+            <motion.h3 
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-block text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ea5a14] to-[#194c7c] drop-shadow-md tracking-wide"
+            >
+              Smart Security Solutions for Every Space
+            </motion.h3>
+          </motion.div>
           <div className="flex items-center gap-4 mb-8">
             <h2 className="text-[#194c7c] text-3xl md:text-4xl font-bold uppercase tracking-tight font-['Montserrat',sans-serif] whitespace-nowrap">
               ABOUT US
