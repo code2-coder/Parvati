@@ -38,19 +38,19 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Our Location',
-      content: 'Shop No.7, J Tower Building, Ahilybai Holkar Chowk, Padampura, Ch. Sambhajinagar, Maharashtra 431001',
+      content: 'Shop No.7, Jai Towers, Ahilyabai Holkar Chowk, Panchavati Rd, near Ahilyabai Holkar Chowk, Shriram Nagar, Konkanwadi, Chhatrapati Sambhajinagar, Maharashtra 431001',
       color: 'blue'
     },
     {
       icon: Phone,
       title: 'Call / WhatsApp',
-      content: '+91 97673 75262',
+      content: '+91 9767375262 | 9665985262',
       color: 'emerald'
     },
     {
       icon: Mail,
       title: 'Email Address',
-      content: 'info@parvatisystems.com',
+      content: 'parvati.systems@gmail.com',
       color: 'indigo'
     },
     {
