@@ -56,9 +56,22 @@ export default function Footer() {
 
         {/* All Rights Reserved Section */}
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm font-medium">
-            &copy; {new Date().getFullYear()} Parvati Systems. All Rights Reserved.
-          </p>
+          <div className="flex flex-col gap-1 text-center md:text-left">
+            <p className="text-gray-500 text-sm font-medium">
+              &copy; {new Date().getFullYear()} Parvati Systems. All Rights Reserved.
+            </p>
+            <p className="text-gray-500 text-sm font-medium">
+              Designed & Developed with ❤️ by{" "}
+              <a 
+                href="https://www.codefusionprojects.in/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-semibold text-[#194c7c] hover:text-[#ea5a14] transition-colors"
+              >
+                Code Fusion Projects
+              </a>
+            </p>
+          </div>
           <div className="flex gap-6 text-sm text-gray-500 font-medium">
             <a href="#" className="hover:text-[#ea5a14] transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-[#ea5a14] transition-colors">Terms of Service</a>
